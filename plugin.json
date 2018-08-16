@@ -1,13 +1,13 @@
 {
-    "id": "github",
-    "name": "GitHub",
-    "description": "GitHub plugin for Mattermost.",
+    "id": "gitlab",
+    "name": "GitLab",
+    "description": "GitLab plugin for Mattermost.",
     "version": "0.5.0",
     "backend": {
         "executable": "server/plugin.exe"
     },
     "webapp": {
-        "bundle_path": "webapp/github_bundle.js"
+        "bundle_path": "webapp/gitlab_bundle.js"
     },
     "settings_schema": {
         "header": "To set up the GitHub plugin, you need to register a GitHub OAuth app here https://github.com/settings/applications/new.",
