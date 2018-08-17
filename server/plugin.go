@@ -43,7 +43,7 @@ type Plugin struct {
 	GitLabOAuthClientID     string
 	GitLabOAuthClientSecret string
 	// WebhookSecret           string
-	EncryptionKey           string
+	EncryptionKey string
 	// EnterpriseBaseURL       string
 	// EnterpriseUploadURL     string
 }
@@ -58,12 +58,15 @@ func (p *Plugin) gitlabConnect(token oauth2.Token) *gitlab.Client {
 
 func (p *Plugin) OnActivate() error {
 	if err := p.IsValid(); err != nil {
+		mlog.Error(err.Error())
+		fmt.Println(err.Error())
 		return err
 	}
 	// p.API.RegisterCommand(getCommand())
 	user, err := p.API.GetUserByUsername(p.Username)
 	if err != nil {
 		mlog.Error(err.Error())
+		fmt.Println(err.Error())
 		return fmt.Errorf("Unable to find user with configured username: %v", p.Username)
 	}
 

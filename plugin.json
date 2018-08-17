@@ -10,25 +10,25 @@
         "bundle_path": "webapp/gitlab_bundle.js"
     },
     "settings_schema": {
-        "header": "To set up the GitHub plugin, you need to register a GitHub OAuth app here https://github.com/settings/applications/new.",
+        "header": "To set up the GitLab plugin, you need to register a GitLab OAuth app here https://github.com/settings/applications/new.",
         "settings": [
             {
-                "key": "GitHubOAuthClientID",
-                "display_name": "GitHub OAuth Client ID",
+                "key": "GitLabOAuthClientID",
+                "display_name": "GitLab OAuth Client ID",
                 "type": "text",
-                "help_text": "The client ID for the OAuth app registered with GitHub."
+                "help_text": "The client ID for the OAuth app registered with GitLab."
             },
             {
-                "key": "GitHubOAuthClientSecret",
-                "display_name": "GitHub OAuth Client Secret",
+                "key": "GitLabOAuthClientSecret",
+                "display_name": "GitLab OAuth Client Secret",
                 "type": "text",
-                "help_text": "The client secret for the OAuth app registered with GitHub."
+                "help_text": "The client secret for the OAuth app registered with GitLab."
             },
             {
                 "key": "WebhookSecret",
                 "display_name": "Webhook Secret",
                 "type": "generated",
-                "help_text": "The webhook secret set in GitHub."
+                "help_text": "The webhook secret set in GitLab."
             },
             {
                 "key": "Username",
@@ -44,21 +44,21 @@
             },
             {
                 "key": "GithubOrg",
-                "display_name": "GitHub Organization",
+                "display_name": "GitLab Organization",
                 "type": "text",
-                "help_text": "(Optional) Set to lock the plugin to a single GitHub organization."
+                "help_text": "(Optional) Set to lock the plugin to a single GitLab organization."
             },
             {
                 "key": "EnterpriseBaseURL",
                 "display_name": "Enterprise Base URL",
                 "type": "text",
-                "help_text": "(Optional) The base URL for using the plugin with a GitHub Enterprise installation."
+                "help_text": "(Optional) The base URL for using the plugin with a GitLab Enterprise installation."
             },
             {
                 "key": "EnterpriseUploadURL",
                 "display_name": "Enterprise Upload URL",
                 "type": "text",
-                "help_text": "(Optional) The upload URL for using the plugin with a GitHub Enterprise installation."
+                "help_text": "(Optional) The upload URL for using the plugin with a GitLab Enterprise installation."
             }
         ],
         "footer": ""

@@ -62,16 +62,16 @@ dist: webapp/.npminstall plugin.json
 
 	# Copy server executables & compress plugin
 	mkdir -p dist/gitlab/server
-	mv dist/intermediate/plugin_darwin_amd64 dist/gitlab/server/plugin.exe
+	cp dist/intermediate/plugin_darwin_amd64 dist/gitlab/server/plugin.exe
 	cd dist && tar -zcvf mattermost-gitlab-plugin-darwin-amd64.tar.gz gitlab/*
-	mv dist/intermediate/plugin_linux_amd64 dist/gitlab/server/plugin.exe
+	cp dist/intermediate/plugin_linux_amd64 dist/gitlab/server/plugin.exe
 	cd dist && tar -zcvf mattermost-gitlab-plugin-linux-amd64.tar.gz gitlab/*
-	mv dist/intermediate/plugin_windows_amd64.exe dist/gitlab/server/plugin.exe
+	cp dist/intermediate/plugin_windows_amd64.exe dist/gitlab/server/plugin.exe
 	cd dist && tar -zcvf mattermost-gitlab-plugin-windows-amd64.tar.gz gitlab/*
 
-	# Clean up temp files
-	rm -rf dist/gitlab
-	rm -rf dist/intermediate
+	# # Clean up temp files
+	# rm -rf dist/gitlab
+	# rm -rf dist/intermediate
 
 	@echo MacOS X plugin built at: dist/mattermost-gitlab-plugin-darwin-amd64.tar.gz
 	@echo Linux plugin built at: dist/mattermost-gitlab-plugin-linux-amd64.tar.gz
@@ -84,6 +84,9 @@ localdeploy: dist
 
 deploy: dist
 	scp dist/mattermost-gitlab-plugin-linux-amd64.tar.gz harrison-gitlab:./mm-gitlab-plugin.tar.gz
+
+deploy-exe: dist
+	scp dist/intermediate/plugin_linux_amd64 harrison-gitlab:./go/src/github.com/mattermost/mattermost-server/plugins/gitlab/server/plugin.exe
 
 run: .npminstall
 	@echo Not yet implemented
