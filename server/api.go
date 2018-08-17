@@ -146,11 +146,11 @@ func (p *Plugin) completeConnectUserToGitLab(w http.ResponseWriter, r *http.Requ
 		Token:          tok,
 		GitLabUsername: gitlabUser.Username,
 		// LastToDoPostAt: model.GetMillis(),
-		// Settings: &UserSettings{
+		Settings: &UserSettings{
 		// 	SidebarButtons: SETTING_BUTTONS_TEAM,
 		// 	DailyReminder:  true,
 		// 	Notifications:  true,
-		// },
+		},
 	}
 
 	if err := p.storeGitLabUserInfo(userInfo); err != nil {
@@ -201,7 +201,7 @@ type ConnectedResponse struct {
 	GitLabUsername    string        `json:"gitlab_username"`
 	GitLabClientID    string        `json:"gitlab_client_id"`
 	// EnterpriseBaseURL string        `json:"enterprise_base_url,omitempty"`
-	// Settings          *UserSettings `json:"settings"`
+	Settings          *UserSettings `json:"settings"`
 }
 
 func (p *Plugin) getConnected(w http.ResponseWriter, r *http.Request) {
@@ -218,7 +218,7 @@ func (p *Plugin) getConnected(w http.ResponseWriter, r *http.Request) {
 		resp.Connected = true
 		resp.GitLabUsername = info.GitLabUsername
 		resp.GitLabClientID = p.GitLabOAuthClientID
-		// resp.Settings = info.Settings
+		resp.Settings = info.Settings
 
 		// if info.Settings.DailyReminder && r.URL.Query().Get("reminder") == "true" {
 		// 	lastPostAt := info.LastToDoPostAt

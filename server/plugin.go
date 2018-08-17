@@ -103,10 +103,11 @@ func (p *Plugin) getOAuthConfig() *oauth2.Config {
 	return &oauth2.Config{
 		ClientID:     p.GitLabOAuthClientID,
 		ClientSecret: p.GitLabOAuthClientSecret,
-		Scopes:       []string{"read_repository"},
+		Scopes:       []string{"api"}, // TODO restrict the scope
+		RedirectURL:  "http://harrison-gitlab.spinmint.com:8065/plugins/gitlab/oauth/complete", // TODO set from the SiteURL
 		Endpoint: oauth2.Endpoint{
-			AuthURL:  baseURL + "login/oauth/authorize",
-			TokenURL: baseURL + "login/oauth/access_token",
+			AuthURL:  baseURL + "oauth/authorize",
+			TokenURL: baseURL + "oauth/token",
 		},
 	}
 }
@@ -116,7 +117,7 @@ type GitLabUserInfo struct {
 	Token          *oauth2.Token
 	GitLabUsername string
 	// LastToDoPostAt int64
-	// Settings       *UserSettings
+	Settings       *UserSettings
 }
 
 type UserSettings struct {
